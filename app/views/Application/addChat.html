@@ -1,0 +1,23 @@
+#{extends 'base.html' /}
+#{set title:'addChat' /}
+
+<form action="@{Application.addChat}" method="post" enctype="multipart/form-data">
+	<div >
+		<table>
+			<tr>
+				<th>接受人的帐号:</th>
+				<td>
+				<input type="hidden" name="chat.touserid" value="${touserid}">
+				<input type="text" size="40pt" value="${tousername}"/>
+				</td>
+			</tr>
+			<tr>
+				<th>Message:</th>
+				<td>				<textarea cols=45 rows=8 name="chat.message"> </textarea></td>
+			</tr>
+		</table>
+		<div style="margin:10px 20% 10px 30%;">
+			<input type="submit" value="发送" class="black_button"/>
+		</div>
+	</div>
+</form>

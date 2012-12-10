@@ -1,0 +1,37 @@
+#{extends 'base.html' /}
+#{set title:'Login' /}
+
+${error}
+
+<form action="@{Application.login}" method="post">
+	${loginstatu}
+	<div style="width:300px;">
+		<div style="color:#f00">
+			#{if flash.error}
+			${flash.error}
+			#{/if}
+		</div>
+		<table>
+			<tr>
+			<tr>
+				<td width=60px>姓名:</td>
+				<td>
+				<input type="text" name="name"/>
+				</td>
+			</tr>
+			<tr>
+				<td>密码:</td>
+				<td>
+				<input type="password" name="passwd"/>
+				</td>
+			</tr>
+		</table>
+		<div style="position: relative:top:5px;text-align: -webkit-center;">
+			<div style="margin:5px;">
+				<input type="button" value="转去注册" class="black_button" onclick="window.location.href='@{Application.goRegister()}'"/>
+				<input type="submit" value="登录" class="black_button"/>
+			</div>
+		</div>
+	</div>
+</form>
+

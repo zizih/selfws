@@ -1,0 +1,51 @@
+#{extends 'base.html' /}
+#{set title:'addChat' /}
+
+<div>
+	<input type="button" class="black_button" style="margin-left:90%;" value="返回人员列表" onclick="window.location.href='@{Application.index}'" >
+	<div>
+		<div>
+			你总共收到${chatSendList?.size()}条消息
+		</div>
+		#{list items:chatSendList, as:'chat'}
+		<div style="width:500px;background:#000;color:#fff;margin:20px;">
+			<div style="border:1px solid #fff">
+				From: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${chat.getFromUserName()}
+			</div>
+			<div >
+				发送时间:&nbsp; ${new Date(chat.sendtime)}
+			</div>
+			<div >
+				Message:&nbsp;&nbsp;&nbsp; ${chat.message}
+			</div>
+			<div>
+				<a href="@{Application.deleteChat(chat.id)}">删除</a>
+				<a href="@{Application.goChat(chat.fromuserid,chat.getFromUserName())}">回复${chat.getFromUserName()}</a>
+			</div>
+		</div>
+		#{/list}
+	</div>
+	<br>
+	<div>
+		<div>
+			你总共发出了${chatRecieveList?.size()}条消息
+		</div>
+		#{list items:chatRecieveList, as:'chat'}
+		<div style="width:500px;background:#000;color:#fff;margin:20px;">
+			<div style="border:1px solid #fff">
+				To: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${chat.getToUserName()}
+			</div>
+			<div >
+				发送时间:&nbsp; ${new Date(chat.sendtime)}
+			</div>
+			<div >
+				Message:&nbsp;&nbsp;&nbsp; ${chat.message}
+			</div>
+			<div>
+				<a href="@{Application.deleteChat(chat.id)}">删除</a>
+				<a href="@{Application.goChat(chat.touserid,chat.getToUserName())}">再发送给${chat.getToUserName()}</a>
+			</div>
+		</div>
+		#{/list}
+	</div>
+</div>

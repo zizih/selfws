@@ -1,0 +1,26 @@
+#{extends 'experience.html' /}
+#{set title:'showExperience' /}
+
+<div id="user_info_height">
+	<table style="table-layout: fixed;">
+		<tr>
+			总共有${experienceList?.size()}条记录
+		</tr>
+		<tr>
+			<th >summary</th>
+			<th >content</th>
+			<th >start Time</th>
+			<th >end Time</th>
+			<th >操作</th>
+		</tr>
+		#{list items: experienceList ,as: 'experience'}
+		<tr>
+			<td width="200px">${experience?.summary}</td>
+			<td width="300px" >${experience?.content}</td>
+			<td width="100px" id="time1">${experience?.getStartTime()}</td>
+			<td width="100px" id="time2">${experience?.getEndTime()}</td>
+			<td><a href="@{Application.deleteExperience(experience.id)}">删除</a><a href="@{Application.goAddExperience(experience.id)}">修改</a></td>
+		</tr>
+		#{/list}
+	</table>
+</div>

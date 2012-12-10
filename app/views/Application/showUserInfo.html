@@ -1,0 +1,103 @@
+#{extends 'base.html' /}
+#{set title:'UserInfo' /}
+
+<div class="${iflogin?'':'hidden'}">
+	<div class="login_form" id="show">
+		<form action="@{Application.register}" method="post">
+			<div class=" user_info left" id="show_user_info_height">
+				<table id="user_info_table" style="width:245">
+					<tr>
+						<td>姓名:</td>
+						<td class="t1"> ${user?.name} </td>
+						<td class="t2 hidden">
+						<input type="hidden" name='user.id'  value='${user?.id}'/>
+						<input type="text" name='user.name' value='${user?.name}'/>
+						</td>
+					</tr>
+					<tr>
+						<td>密码:</td>
+						<td class="t1">***${user?.passwd?.length()}</td>
+						<td class="t2 hidden" id="tp3">
+						<input type="password" name='passwd' />
+						</td>
+					</tr>
+					<tr class="${statuString=='passwdfalse'?'':'hidden'}">
+						<td></td>
+						<td style="color: #f00;">* #{if flash.error} ${statuString} #{/if}</td>
+					</tr>
+					<tr class="tp3 hidden">
+						<td>新密码:</td>
+						<td>
+						<input type="password" name='newpasswd' id="passwd2"/>
+						</td>
+					</tr>
+					<tr class="tp3 hidden">
+						<td>再输入一次:</td>
+						<td>
+						<input type="password" id="passwd3"/>
+						</td>
+					</tr>
+					<tr class="prot3 hidden">
+						<td></td>
+						<td style="color: #f00;">* 两次输入密码不一样</td>
+					</tr>
+					<tr>
+						<td id="t1">性别:</td>
+						<td class="t1"> ${user?.gender==1?"男":"女"} </td>
+						<td class="t2 hidden">
+						<input type="text" name='user.gender'  value="${user?.gender}"/>
+						</td>
+					<tr>
+						<td>email:</td>
+						<td class="t1">${user?.email} </td>
+						<td class="t2 hidden">
+						<input type="text" name='user.email' value="${user?.email}"/>
+						</td>
+					</tr>
+					<tr>
+						<td>手机号码:</td>
+						<td class="t1"> ${user?.phone} </td>
+						<td class="t2 hidden">
+						<input type="text" name='user.phone' value="${user?.phone}"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="height:72px;">自我描述:</td>
+						<td class="t1">${user?.description}</td>
+						<td class="t2 hidden">						<textarea onfocus="this.select()"  cols=20 rows=4 name="user.description" >${user?.description}</textarea></td>
+					</tr>
+				</table>
+				<div align="center" style="position: relative:top:5px;">
+					<div style="margin:5px;">
+						<input id="abandon_modify_userinfo" type="button" value="放弃" class="black_button hidden" onclick="window.location.href=''"/>
+						<input id="modify_userinfo" type="button" value="修改" class="black_button"/>
+						<input id="save_userinfo" type="submit" value="保存" class="black_button hidden"/>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="left user_info" id="show_user_avatar_height">
+			<form action="@{Application.changeAvatar}" method="post" enctype="multipart/form-data">
+				<table>
+					<tr>
+						<td></td>
+						<td>
+						<input type="file" name="avatar"  id="avatar_id"/>
+						<input type="hidden" name="userId" />
+						</td>
+					</tr>
+					<tr>
+						<td>头像:</td>
+						<td><img class="avatar_img" src="${user?.userImgPath}" onchange="previewAvatar()"/></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+						<input type="submit" value="上传" class="black_button"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>

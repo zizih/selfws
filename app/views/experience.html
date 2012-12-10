@@ -1,0 +1,26 @@
+#{extends 'base.html' /}
+
+<style type="text/css">
+	table {
+		border-spacing: 0px;
+		margin: 20px;
+		background: #000;
+		color: #fff;
+		width:800px;
+	}
+	td, th {
+		border: 1px solid #111;
+		margin: 0px;
+		word-wrap: break-word;
+		text-align:center;
+	}
+	th{
+		background:#222;
+		height:20px;
+	}
+</style>
+
+<div style="margin:10px">
+	<input type="button" class="black_button" style="margin-left:90%;" value="添加" onclick="window.location.href='@{Application.goAddExperience}'" >
+	#{doLayout /}
+</div>

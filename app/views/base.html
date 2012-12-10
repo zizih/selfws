@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>#{get 'title' /}</title>
+		<meta charset="${_response_encoding}">
+		<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/base.css'}">
+		<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/effect.css'}">
+		<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/position.css'}">
+		#{get 'moreStyles' /}
+		<link rel="shortcut icon" type="image/png" href="@{'/public/images/logo.png'}">
+		<script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+		<script src="@{'/public/javascripts/base.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+		#{get 'moreScripts' /}
+	</head>
+	<body>
+		<div id="header">
+			<div id="logo"></div>
+			<div id="nav" class="left">
+				<div id="nav_bar">
+					<div class="nav_item">
+						<li>
+							<a href="/">Home</a>
+						</li>
+					</div>
+					<div class="nav_item">
+						<li>
+							<a href="" class="${iflogin?'hidden':hidden}">Experience</a>
+							<a href="@{Application.showExperience}" class="${iflogin?'':'hidden'}">Experience</a>
+						</li>
+					</div>
+					<div class="nav_item">
+						<li>
+							<a href="" class="${iflogin?'hidden':hidden}">Album</a>
+							<a href="@{Application.showAlbum}" class="${iflogin?'':'hidden'}">Album</a>
+						</li>
+					</div>
+					<div class="nav_item">
+						<li>
+							<a href="" class="${iflogin?'hidden':hidden}">Account</a>
+							<a href="@{Application.showUserInfo}" class="${iflogin?'':'hidden'}">Account</a>
+						</li>
+					</div>
+					<div class="nav_item">
+						<li>
+							<a href="@{Application.logout}" class="${iflogin==true?'':'hidden'}">logout</a>
+							<a href="@{Application.goLogin}" class="${iflogin==false?'':'hidden'}">login</a>
+						</li>
+					</div>
+				</div>
+				<a href="@{Application.showUserInfo}" class=" ${iflogin?'':'hidden'}"><img class="avatar_img" src="${currentUser?.userImgPath}"></a>
+			</div>
+		</div>
+		<div id="nav_img">
+			<div style="margin:20px;color:#0f0;float:right;">
+				${iflogin?'已登录，Welcome !  '+currentUser.name:''}
+			</div>
+		</div>
+		<div id="content">
+			#{doLayout /}
+		</div>
+	</body>
+</html>

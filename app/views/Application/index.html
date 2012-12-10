@@ -1,0 +1,22 @@
+#{extends 'base.html' /}
+#{set title:'Home' /}
+
+<div class="${iflogin?'hidden':''}">
+	本网站只提供给有帐户人员使用
+	<input type="button" class="black_button" value="登录" onclick="window.location.href='@{Application.goLogin()}'"/>
+	<input type="button" class="black_button" value="注册" onclick="window.location.href='@{Application.goRegister()}'"/>
+</div>
+
+<div  class="${iflogin?'':'hidden'}">
+	总共有${userList.size()}人注册了，你都可以和他们联系
+	<input type="button" class="black_button" style="margin-left:90%;" value="查看消息" onclick="window.location.href='@{Application.showChat}'" >
+	#{list items: userList, as :'user'}
+	<div class="user_item left ${iflogin?'':'hidden'}">
+		<img class="avatar_img left" id="user_item_avatar" onmouseover="" src="${user?.userImgPath}">
+		<span><a href="#" class=""  id="user_item" style="font-size:2em;">${user?.name}</a>:
+			${user?.description} </span>
+		<br>
+		<span><a href="@{Application.goChat(user.id,user.name)}" style="font-size:12px;color:#aaa; background: #222;">联系他/她</a></span>
+	</div>
+	#{/list}
+</div>

@@ -1,0 +1,17 @@
+/*
+ declare elements
+ */
+
+html, body, a, li,
+{
+	margin: 0;
+	padding: 0;
+}
+
+#nav, #nav_item, #nav_current_item,#header,#logo{
+	
+}
+
+.login_form{
+	
+}

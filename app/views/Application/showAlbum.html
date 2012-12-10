@@ -1,0 +1,33 @@
+#{extends 'base.html' /}
+#{set title:'Album' /}
+
+<div style="margin:10px">
+	<div>
+		这里有${albumList?.size()}个图片
+	</div>
+	<div>
+		#{list items: albumList ,as: 'album'}
+		<div class="left">
+			<img  class="album_img" src=${album?.imgpath}>
+			<input type="button" onclick="window.location.href='@{Application.deleteAlbum(album.id)}'" value="删除"/>
+		</div>
+		#{/list}
+	</div>
+	<br>
+	<form action="@{Application.addAlbum}" method="post" enctype="multipart/form-data">
+		<table style="background: #000;color:#fff;">
+			<tr>
+				<td>图片:</td>
+				<td>
+				<input type="file" name="img"/>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+				<input type="submit" value="上传" class="black_button"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

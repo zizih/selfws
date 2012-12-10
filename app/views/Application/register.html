@@ -1,0 +1,73 @@
+#{extends 'base.html' /}
+#{set title:'Register' /}
+
+<form action="@{Application.register}" method="post" enctype="multipart/form-data">
+	<div class="login_form">
+		<div class="user_info left" id="user_info_height">
+			<table>
+				<tr>
+					<td>姓名:</td>
+					<td>
+					<input type="hidden" name="user.id" value="${user?.id}">
+					<input type="text" name="user.name"/>
+					</td>
+				</tr>
+				<tr>
+					<td>密码:</td>
+					<td>
+					<input type="password" name="user.passwd"/>
+					</td>
+				</tr>
+				<tr>
+					<td>再输入一次:</td>
+					<td>
+					<input type="password"/>
+					</td>
+				</tr>
+				<tr>
+					<td>性别:</td>
+					<td>
+					<input type="radio" name="user.gender" checked value="1"/>
+					男
+					<input type="radio" name="user.gender" value="0"/>
+					女</td>
+				<tr>
+					<td>email:</td>
+					<td>
+					<input type="email" name="user.email" />
+					</td>
+				</tr>
+				<tr>
+					<td>手机号码:</td>
+					<td>
+					<input type="text" name="user.phone" />
+					</td>
+				</tr>
+				<tr>
+					<td>自我描述:</td>
+					<td>					<textarea onfocus="this.value=String('')"  cols=20 rows=4 name="user.description" >description yourself factually ...</textarea></td>
+				</tr>
+			</table>
+		</div>
+		<div class="left user_info" id="user_avatar_height">
+			<table>
+				<tr>
+					<td></td>
+					<td>
+					<input type="file" name="avatar"  id="avatar_id"/>
+					</td>
+				</tr>
+				<tr>
+					<td>头像:</td>
+					<td id="html5filetest"><img class="avatar_img" src="/public/images/nopreview.png" onchange="previewAvatar()"/></td>
+				</tr>
+			</table>
+			<div align="center" style="position:relative;top:40px;" class="${iflogin?'hidden':''}">
+				<div style="margin:5px;">
+					<input type="button" value="转去登录" class="black_button" onclick="window.location.href='@{Application.goLogin()}'"/>
+					<input type="submit" value="注册" class="black_button"/>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,120 @@
+body {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input {
+	margin: 5px auto;
+}
+
+#header {
+	margin-top: 10px;
+	display: inline-block;
+	margin-left: 15%;
+	margin-bottom: -10px;
+}
+
+#logo {
+	width: 150px;
+	height: 120px;
+	float: left;
+}
+
+#nav {
+	float: right;
+	padding: 50px;
+}
+
+#nav_bar {
+	margin: 0px;
+	padding: 5px;
+}
+
+.nav_item {
+	padding: 5px;
+}
+
+#nav li {
+	margin: 5px;
+}
+
+a {
+	padding: 5px 10px 5px 10px;
+}
+
+#nav_img {
+	margin: 0px 15% 50px 30%;
+	padding: 1px;
+	margin-top: -30px;
+}
+
+#content {
+	margin: 5px 15% 50px 15%;
+	height: auto;
+}
+
+.left {
+	float: left;
+	display:inline;
+	margin: 5px;
+}
+
+.right {
+	float: right;
+	display:inline;
+	margin:5px;
+}
+
+.login_form {
+	margin: 0px;
+	padding:0px;
+}
+
+#user_info_table tr {
+	height: 32px;
+}
+
+.users_table {
+	pdding: 10px;
+}
+
+.login_form #avatar_img {
+	position: relative;
+	top: 10px;
+}
+.login_form .avatar_img {
+	width: 100px;
+	height: 100px;
+}
+
+.album_img {
+	width: 100px;
+	height: 100px;
+}
+
+#header .avatar_img{
+	width:45px;
+	height:45px;
+	margin: -45px -60px -15px 0px;
+	border:5px;
+	border-radius: 5px;
+	float:right;
+	display:inline;
+}
+
+.user_item{
+	width:300px;
+}
+
+.user_item .avatar_img{
+	width:60px;
+	height:70px;
+	margin:5px;
+}
+
+
+.ooPoint {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}

@@ -1,0 +1,84 @@
+#{extends 'experience.html' /}
+#{set title:'addExperience' /}
+
+<form action="@{Application.addExperience}" method="post" enctype="multipart/form-data">
+	<div >
+		<div id="user_info_height">
+			<table>
+				<tr>
+					<th>summary:</th>
+					<td>
+					<input type="hidden" name="experience.id" value="${experience?.id}">
+					<input type="text" size="40pt" name="experience.summary" value="${experience?.summary}"/>
+					</td>
+				</tr>
+				<tr>
+					<th>时间：</th>
+					<td>
+					<select name="startyear">
+						%{
+						for(int b=2012;b>1980;b--) {
+						}%
+						<option>${b}</option>
+						%{
+						}
+						}%
+					</select>
+					<select name="startmonth">
+						%{
+						for(int b=12;b>0;b--) {
+						}%
+						<option>${b}</option>
+						%{
+						}
+						}%
+					</select>
+					<select name="startday">
+						%{
+						for(int b=30;b>0;b--) {
+						}%
+						<option>${b}</option>
+						%{
+						}
+						}%
+					</select> &nbsp;to&nbsp;
+					<select name="endyear">
+						%{
+						for(int b=2012;b>1980;b--) {
+						}%
+						<option>${b}</option>
+						%{
+						}
+						}%
+					</select>
+					<select name="endmonth">
+						%{
+						for(int b=12;b>0;b--) {
+						}%
+						<option>${b}</option>
+						%{
+						}
+						}%
+					</select>
+					<select name="endday">
+						%{
+						for(int b=30;b>0;b--) {
+						}%
+						<option>${b}</option>
+						%{
+						}
+						}%
+					</select></td>
+				</tr>
+				<tr>
+					<th>content:</th>
+					<td>					<textarea cols=45 rows=8 name="experience.content" >${experience?.content}</textarea></td>
+				</tr>
+			</table>
+			<div style="margin:10px 20% 10px 30%;">
+				<input type="button" onclick="window.location.href='@{Application.showExperience}'" class="black_button" value="返回列表">
+				<input type="submit" value="提交" class="black_button"/>
+			</div>
+		</div>
+	</div>
+</form>
