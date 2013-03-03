@@ -2,7 +2,7 @@
 #{set title:'Home' /}
 
 <div class="${iflogin?'hidden':''}">
-	本网站只提供给有帐户人员使用
+	本站只提供给有帐户人员使用
 	<input type="button" class="black_button" value="登录" onclick="window.location.href='@{Application.goLogin()}'"/>
 	<input type="button" class="black_button" value="注册" onclick="window.location.href='@{Application.goRegister()}'"/>
 </div>
